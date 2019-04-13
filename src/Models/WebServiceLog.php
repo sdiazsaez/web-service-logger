@@ -17,10 +17,9 @@ class WebServiceLog extends Model {
         'provider',
         'service',
         'url',
-        'request_id',
         'request',
         'response',
-        'response_status'
+        'success'
     ];
 
     protected $casts = [
@@ -48,7 +47,7 @@ class WebServiceLog extends Model {
         $this->attributes['request_id'] = md5($request);
     }
 
-    public function scopeNewerThan($query, $hours = 0) {
+    public function scopeNewerThan($query, int $hours = 0) {
         if($hours == 0) {
             return $query;
         }
