@@ -26,7 +26,6 @@ class WebServiceLogController {
             'response'       => $response,
             'success'        => $success,
         ]);
-
     }
 
     public function getLog(int $objectId, string $objectType, string $clientService, string $provider, array $request,
