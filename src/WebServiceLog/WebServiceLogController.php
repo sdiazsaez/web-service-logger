@@ -29,7 +29,7 @@ class WebServiceLogController {
     }
 
     public function getLog(int $objectId, string $objectType, string $clientService, string $provider, array $request,
-        int $expireTime): WebServiceLog {
+        int $expireTime): ?WebServiceLog {
         return WebServiceLog::where([
             'object_id'      => $objectId,
             'object_type'    => $objectType,
