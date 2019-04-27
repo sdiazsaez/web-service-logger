@@ -30,10 +30,10 @@ class WebServiceLog extends Model {
 
     public function __construct(array $attributes = []) {
         parent::__construct($attributes);
-        $this->installableConfig = InstallableConfig::config('Larangular\WebServiceLogger\WebServiceLoggerServiceProvider');
-        $this->table = $this->installableConfig->getName('web_service_log');
-        $this->connection = $this->installableConfig->getConnection('web_service_log');
-        $this->timestamps = $this->installableConfig->getTimestamp('web_service_log');
+        $installableConfig = InstallableConfig::config('Larangular\WebServiceLogger\WebServiceLoggerServiceProvider');
+        $this->table = $installableConfig->getName('web_service_log');
+        $this->connection = $installableConfig->getConnection('web_service_log');
+        $this->timestamps = $installableConfig->getTimestamp('web_service_log');
     }
 
     public function setRequestAttribute($request) {
@@ -41,6 +41,11 @@ class WebServiceLog extends Model {
         $request = json_encode($request);
         $this->attributes['request'] = $request;
         $this->setRequestId($request);
+    }
+
+    public function setResponseAttribute($value) {
+        if(!isset($value)) return;
+        $this->attributes['response'] = json_encode($value);
     }
 
     private function setRequestId($request) {
