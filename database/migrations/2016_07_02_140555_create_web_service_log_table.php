@@ -29,8 +29,8 @@ class CreateWebServiceLogTable extends Migration {
             $table->string('service');
             $table->string('url');
             $table->string('request_id');
-            $table->json('request');
-            $table->json('response');
+            $table->longText('request');
+            $table->longText('response');
             $table->boolean('success');
             if ($this->hasTimestamp) {
                 $table->softDeletes();
