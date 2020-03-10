@@ -19,7 +19,9 @@ class WebServiceLog extends Model {
         'url',
         'request',
         'response',
-        'success'
+        'success',
+        'raw_request',
+        'raw_response'
     ];
 
     protected $casts = [

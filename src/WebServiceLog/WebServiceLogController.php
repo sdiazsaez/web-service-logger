@@ -14,7 +14,7 @@ class WebServiceLogController {
     }
 
     public function makeLog(int $objectId, string $objectType, string $clientService, string $provider, string $service,
-        string $url, array $request, array $response, bool $success): void {
+        string $url, array $request, array $response, bool $success, ?string $rawRequest = null, ?string $rawResponse = null): void {
         $this->gateway->save([
             'object_id'      => $objectId,
             'object_type'    => $objectType,
@@ -25,6 +25,8 @@ class WebServiceLogController {
             'request'        => $request,
             'response'       => $response,
             'success'        => $success,
+            'raw_request'    => $rawRequest,
+            'raw_response'   => $rawResponse,
         ]);
     }
 
