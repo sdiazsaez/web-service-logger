@@ -2,17 +2,13 @@
 
 namespace Larangular\WebServiceLogger\Http\Controllers\WebServiceLog;
 
-use Larangular\RoutingController\{Controller, Contracts\HasResource, Contracts\IGatewayModel};
+use Larangular\RoutingController\{Contracts\IGatewayModel, Controller};
 use Larangular\WebServiceLogger\Models\WebServiceLog;
-use Larangular\WebServiceLogger\Http\Resources\WebServiceLogResource;
 
-class Gateway extends Controller implements IGatewayModel, HasResource {
+class Gateway extends Controller implements IGatewayModel {
 
     public function model() {
         return WebServiceLog::class;
     }
 
-    public function resource() {
-        return WebServiceLogResource::class;
-    }
 }
